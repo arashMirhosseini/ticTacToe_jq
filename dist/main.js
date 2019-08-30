@@ -115,7 +115,7 @@ eval("const Board = __webpack_require__(/*! ./board */ \"./backend/board.js\");\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("\nconst MoveError = function (msg) { this.msg = msg; };\n\n// MoveError really should be a child class of the built in Error object provided\n// by Javascript, but since we haven't covered inheritance yet, we'll just\n// let it be a vanilla Object for now!\n\nmodule.exports = MoveError;\n\n\n//# sourceURL=webpack:///./backend/moveError.js?");
+eval("const MoveError = function (msg) { this.msg = msg; };\n\nmodule.exports = MoveError;\n\n\n//# sourceURL=webpack:///./backend/moveError.js?");
 
 /***/ }),
 

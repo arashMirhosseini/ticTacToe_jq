@@ -137,7 +137,7 @@ eval("const View = __webpack_require__(/*! ./ttt-view */ \"./src/ttt-view.js\");
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("class View {\n  constructor(game, $el) {\n    this.game = game;\n    this.$el = $el;\n  }\n\n  bindEvents() {}\n\n  makeMove($square) {}\n\n  setupBoard() {\n    \n  }\n}\n\nmodule.exports = View;\n\n\n//# sourceURL=webpack:///./src/ttt-view.js?");
+eval("class View {\n  constructor(game, $el) {\n    this.game = game;\n    this.$el = $el;\n    this.setupBoard = this.setupBoard.bind(this);\n    this.setupBoard();\n  }\n\n  bindEvents() {}\n\n  makeMove($square) {}\n\n  setupBoard() {\n    const $grid = $(\"<ul>\");\n    $grid.css({\n      display: \"flex\",\n      width: \"300px\",\n      flexWrap: \"wrap\"\n    });\n    \n    for (let i = 0; i < 9; i++) {\n      const $cell = $(\"<li>\")\n      $cell.css(\"width\", \"100px\");\n      $grid.append($cell);\n    }\n    this.$el.append($grid);\n  }\n}\n\nmodule.exports = View;\n\n\n//# sourceURL=webpack:///./src/ttt-view.js?");
 
 /***/ })
 

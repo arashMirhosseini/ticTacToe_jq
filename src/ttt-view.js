@@ -7,19 +7,27 @@ class View {
   }
 
   bindEvents() {
-    $('ul').on("click", "li", event => {
+    this.$el.on("click", "li", event => {
       const $cell = $(event.currentTarget);
-      const posString = $cell.attr("data-pos");
-      const pos = [
-        parseInt(posString[0], 10), 
-        parseInt(posString[2], 10)
-      ];
-      
-      this.game.playMove(pos);
+      this.makeMove($cell);
     });
   }
+  
+  makeMove($square) {
+    const posString = $cell.attr("data-pos");
+    const pos = [
+      parseInt(posString[0], 10),
+      parseInt(posString[2], 10)
+    ];
+    this.game.playMove(pos);
 
-  makeMove($square) {}
+
+    let mark = "x";
+    mark = (mark === "x") ? "o" : "x";
+    $square.addClass(mark);
+    return mark;
+
+  }
 
   setupBoard() {
     const $grid = $("<ul>");

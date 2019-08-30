@@ -1,6 +1,6 @@
-## Tic Tac Toe 
+# Tic Tac Toe 
 
-# Description 
+## Description 
 
 Implementation of Tic Tac Toe game with JavaScript. 
 * Backend is an OOP design implemented with node. 

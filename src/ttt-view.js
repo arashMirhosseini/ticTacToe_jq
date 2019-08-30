@@ -8,24 +8,43 @@ class View {
 
   bindEvents() {
     this.$el.on("click", "li", event => {
-      const $cell = $(event.currentTarget);
-      this.makeMove($cell);
+      const $square = $(event.currentTarget);
+      this.makeMove($square);
     });
   }
   
   makeMove($square) {
-    const posString = $cell.attr("data-pos");
+    const posString = $square.attr("data-pos");
     const pos = [
       parseInt(posString[0], 10),
       parseInt(posString[2], 10)
     ];
-    this.game.playMove(pos);
+    const currentPlayer = this.game.currentPlayer;
+    try {
+      this.game.playMove(pos);
+    } catch (e) {
+      alert("This " + e.msg.toLowerCase());
+      return;
+    }
 
+    $square.addClass(currentPlayer);
+    if (this.game.isOver()) {
+      // cleanup click handlers.
+      this.$el.off("click");
+      this.$el.addClass("game-over");
 
-    let mark = "x";
-    mark = (mark === "x") ? "o" : "x";
-    $square.addClass(mark);
-    return mark;
+      const winner = this.game.winner();
+      const $figcaption = $("<figcaption>");
+
+      if (winner) {
+        this.$el.addClass(`winner-${winner}`);
+        $figcaption.html(`You win, ${winner}!`);
+      } else {
+        $figcaption.html("It's a draw!");
+      }
+
+      this.$el.append($figcaption);
+    }
 
   }
 

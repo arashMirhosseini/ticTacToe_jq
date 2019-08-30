@@ -3,5 +3,5 @@ const Game = require("../backend/game");
 
   $(() => {
     const game = new Game();
-    const view = new View(game, $('.ttt'));
+    new View(game, $('.ttt'));
   });
